@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Splice Demo</title>
+</head>
+<body>
+  <!-- Input fields for user input -->
+  <input id="start" placeholder="Start index" type="number">
+  <input id="deleteCount" placeholder="No. of elements to remove" type="number">
+  <input id="items" type="text" placeholder="Elements to add (comma separated)" />
+  <button id="splice-Btn" onclick="spliceArray()">Splice Array</button>
+  <!-- Div to display the result -->
+  <div id="result"></div>
+
+  <script>
+    // Initial array
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+
+    // Get references to HTML elements
+    let resultDiv = document.getElementById("result");
+    let spliceBtn = document.getElementById("splice-Btn");
+
+    /**
+     * Splice Array function
+     * Called when the "Splice Array" button is clicked
+     */
+    function spliceArray() {
+      // Get user input values
+      let start = +document.getElementById("start").value; // we can use + at the place of parseInt();
+      let deleteCount = parseInt(document.getElementById("deleteCount").value);
+      let items = document.getElementById("items").value.split(",").map(Number);
+
+      // Splice the array
+      arr.splice(start, deleteCount,...items);
+
+      // Display the modified array
+      resultDiv.innerText = `Modified Array: ${arr}`;
+    }
+  </script>
+
+</body>
+</html>
